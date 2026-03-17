@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Incomplete Prompt Jailbreak (IPJ)</title>
+    <meta
+      name="description"
+      content="Paper project page for Incomplete Prompt Jailbreaks (ACL Findings preprint)."
+    />
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <div>
+          <p class="kicker"> Preprint</p>
+          <h1>Incomplete Prompt Jailbreaks</h1>
+          <p class="subtitle">Project page for the preprint.</p>
+          <p class="authors">Yeonjea Kim, Bumjin Park, Jaesik Choi</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="typing-section" aria-label="Completion and incomplete comparison">
+        <h2>Completions vs Incomplete Prompt Jailbreaks</h2>
+        <div class="typing-grid">
+          <article class="typing-card">
+            <p class="card-title">Completion Prompt</p>
+            <div class="flow-block">
+              <p class="block-title">Text Input</p>
+              <pre class="typing-box input-box" id="input-complete"></pre>
+            </div>
+            <div class="flow-block">
+              <p class="block-title">Generation</p>
+              <pre class="typing-box generation-box" id="gen-complete"></pre>
+            </div>
+          </article>
+          <article class="typing-card alert-card">
+            <p class="card-title">Incomplete Prompt Jailbreak</p>
+            <div class="flow-block">
+              <p class="block-title">Text Input</p>
+              <pre class="typing-box input-box" id="input-incomplete"></pre>
+            </div>
+            <div class="flow-block">
+              <p class="block-title">Generation</p>
+              <pre class="typing-box generation-box" id="gen-incomplete"></pre>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="overview" aria-label="Paper overview">
+        <h2>Overview</h2>
+        <p>
+          We study incomplete prompt jailbreaks where models continue harmful content before refusal is triggered.
+          This project page summarizes our setup, observations, and analysis.
+        </p>
+        <div class="project-links" aria-label="Project resources">
+          <a href="#" class="resource-link paper-link">
+            <span class="badge-icon" aria-hidden="true">📄</span>
+            <span>Paper</span>
+          </a>
+          <a href="https://huggingface.co/datasets" class="resource-link" target="_blank" rel="noreferrer">
+            <span class="badge-icon" aria-hidden="true">🤗</span>
+            Dataset (Hugging Face)
+          </a>
+          <a href="https://github.com" class="resource-link" target="_blank" rel="noreferrer">
+            <span class="badge-icon" aria-hidden="true">
+              <svg viewBox="0 0 16 16" role="img" focusable="false">
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.64 7.64 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+                />
+              </svg>
+            </span>
+            Code (GitHub)
+          </a>
+        </div>
+      </section>
+
+      <section class="figures" aria-label="Research figures">
+        <h2>Figures</h2>
+        <div class="figure-grid">
+          <figure class="figure-card">
+            <img src="./assets/figure-pipeline.svg" alt="Pipeline figure for incomplete prompt jailbreak analysis" />
+            <figcaption>Figure 1. Evaluation pipeline for completion vs incomplete prompt behavior.</figcaption>
+          </figure>
+          <figure class="figure-card">
+            <img src="./assets/figure-refusal.svg" alt="Refusal timing comparison figure" />
+            <figcaption>Figure 2. Refusal tends to occur after sentence termination for incomplete prompts.</figcaption>
+          </figure>
+          <figure class="figure-card">
+            <img src="./assets/figure-neurons.svg" alt="Neuron-level intervention figure" />
+            <figcaption>Figure 3. Termination and continuation neuron signals as intervention handles.</figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Incomplete Prompt Jailbreaks</p>
+    </footer>
+
+    <script src="./assets/app.js" defer></script>
+  </body>
+</html>

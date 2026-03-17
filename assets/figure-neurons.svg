@@ -1,0 +1,36 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" rx="28" fill="#FBFCFF"/>
+  <text x="64" y="90" fill="#1D1D1D" font-family="monospace" font-size="34">Termination vs Continuation Neurons</text>
+
+  <rect x="76" y="150" width="480" height="520" rx="24" fill="#EEF5FF" stroke="#9FBCE2" stroke-width="2"/>
+  <text x="108" y="208" fill="#1E4A80" font-family="monospace" font-size="26">Termination signal</text>
+
+  <circle cx="180" cy="280" r="18" fill="#4E80C6"/>
+  <circle cx="280" cy="280" r="18" fill="#4E80C6"/>
+  <circle cx="380" cy="280" r="18" fill="#4E80C6"/>
+  <circle cx="480" cy="280" r="18" fill="#4E80C6"/>
+  <circle cx="230" cy="380" r="18" fill="#4E80C6"/>
+  <circle cx="330" cy="380" r="18" fill="#4E80C6"/>
+  <circle cx="430" cy="380" r="18" fill="#4E80C6"/>
+  <circle cx="280" cy="480" r="18" fill="#4E80C6"/>
+  <circle cx="380" cy="480" r="18" fill="#4E80C6"/>
+
+  <path d="M180 280L230 380L280 280L330 380L380 280L430 380L480 280" stroke="#7CA2D6" stroke-width="3"/>
+  <path d="M230 380L280 480L330 380L380 480L430 380" stroke="#7CA2D6" stroke-width="3"/>
+
+  <rect x="642" y="150" width="480" height="520" rx="24" fill="#FFF0F0" stroke="#E0ABAB" stroke-width="2"/>
+  <text x="674" y="208" fill="#8A2222" font-family="monospace" font-size="26">Continuation signal</text>
+
+  <circle cx="746" cy="280" r="18" fill="#CA5C5C"/>
+  <circle cx="846" cy="280" r="18" fill="#CA5C5C"/>
+  <circle cx="946" cy="280" r="18" fill="#CA5C5C"/>
+  <circle cx="1046" cy="280" r="18" fill="#CA5C5C"/>
+  <circle cx="796" cy="380" r="18" fill="#CA5C5C"/>
+  <circle cx="896" cy="380" r="18" fill="#CA5C5C"/>
+  <circle cx="996" cy="380" r="18" fill="#CA5C5C"/>
+  <circle cx="846" cy="480" r="18" fill="#CA5C5C"/>
+  <circle cx="946" cy="480" r="18" fill="#CA5C5C"/>
+
+  <path d="M746 280L796 380L846 280L896 380L946 280L996 380L1046 280" stroke="#D78989" stroke-width="3"/>
+  <path d="M796 380L846 480L896 380L946 480L996 380" stroke="#D78989" stroke-width="3"/>
+</svg>

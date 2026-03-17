@@ -1,0 +1,284 @@
+:root {
+  --bg: #ffffff;
+  --ink: #151515;
+  --muted: #626262;
+  --line: #e6e6e6;
+  --surface: #f7f7f5;
+  --accent: #0b66c3;
+  --danger: #bf1d1d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 100% 0%, #f2f7ff 0, transparent 34%),
+    radial-gradient(circle at 0% 100%, #fef5ea 0, transparent 40%),
+    var(--bg);
+  color: var(--ink);
+  font-family: "Source Serif 4", Georgia, serif;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+.site-header,
+.content,
+.site-footer {
+  width: min(1080px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.kicker {
+  font-family: "Space Mono", monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-size: 12px;
+}
+
+h1 {
+  margin-top: 8px;
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 1.05;
+}
+
+.subtitle {
+  margin-top: 14px;
+  max-width: 64ch;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.authors {
+  margin-top: 12px;
+  color: #373737;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.content {
+  padding: 30px 0 56px;
+  display: grid;
+  gap: 34px;
+}
+
+.typing-section h2,
+.overview h2,
+.figures h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.typing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.typing-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  background: #fff;
+  display: grid;
+  gap: 10px;
+}
+
+.alert-card {
+  border-color: #f1c8c8;
+  background: #fff9f9;
+}
+
+.card-title {
+  font-family: "Space Mono", monospace;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.flow-block {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  padding: 10px;
+}
+
+.alert-card .flow-block {
+  border-color: #f1d7d7;
+}
+
+.block-title {
+  margin: 0 0 8px;
+  color: #6f6f6f;
+  font-family: "Space Mono", monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.typing-box {
+  min-height: 54px;
+  margin: 0;
+  white-space: pre-wrap;
+  line-height: 1.45;
+  font-size: 16px;
+}
+
+.input-box {
+  min-height: 40px;
+}
+
+.generation-box {
+  min-height: 84px;
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.58ch;
+  height: 1.1em;
+  transform: translateY(0.1em);
+  background: var(--ink);
+  animation: blink 0.9s steps(1, start) infinite;
+}
+
+.danger {
+  color: var(--danger);
+}
+
+.overview p {
+  color: #2f2f2f;
+  font-size: 20px;
+  line-height: 1.5;
+  max-width: 74ch;
+}
+
+.project-links {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.resource-link {
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid #d8dee8;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+  border-radius: 999px;
+  padding: 8px 14px 8px 10px;
+  font-family: "Space Mono", monospace;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 1px 0 #fff inset, 0 1px 3px rgba(20, 24, 30, 0.08);
+}
+
+.paper-link {
+  border-color: #cedcf2;
+  background: #f6f9ff;
+}
+
+.badge-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  line-height: 1;
+  background: #ffffff;
+  border: 1px solid #d7deea;
+}
+
+.badge-icon svg {
+  width: 13px;
+  height: 13px;
+  fill: #151515;
+}
+
+.resource-link:hover {
+  border-color: #bfc9da;
+  transform: translateY(-1px);
+}
+
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.figure-card {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: 12px;
+}
+
+.figure-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #ececec;
+}
+
+.figure-card figcaption {
+  margin-top: 10px;
+  color: #454545;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 18px 0 28px;
+  color: var(--muted);
+  font-family: "Space Mono", monospace;
+  font-size: 12px;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 920px) {
+  .typing-grid,
+  .figure-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-inner {
+    flex-direction: column;
+  }
+}
