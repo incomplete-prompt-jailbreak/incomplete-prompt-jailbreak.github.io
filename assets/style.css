@@ -19,6 +19,7 @@ body {
     var(--bg);
   color: var(--ink);
   font-family: "Source Serif 4", Georgia, serif;
+  overflow-x: hidden;
 }
 
 h1,
@@ -30,7 +31,7 @@ p {
 .site-header,
 .content,
 .site-footer {
-  width: min(1080px, calc(100% - 32px));
+  width: min(1040px, calc(100% - 32px));
   margin: 0 auto;
 }
 
@@ -80,17 +81,220 @@ h1 {
   gap: 34px;
 }
 
+.content > * {
+  min-width: 0;
+}
+
 .typing-section h2,
+.llm-tendency-section h2,
 .overview h2,
-.figures h2 {
+.figures h2,
+.model-performance h2 {
   font-size: 28px;
   margin-bottom: 12px;
+}
+
+.termination-trend {
+  margin: 10px 0 14px;
+  color: #2d3f54;
+  font-size: 17px;
+  line-height: 1.55;
 }
 
 .typing-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
+}
+
+.sailing-stage {
+  margin-top: 18px;
+  border: 1px solid #cfdceb;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #fafdff 0%, #f3f9ff 100%);
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+.sea-scene {
+  position: relative;
+  min-height: 196px;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.75) 0, rgba(255, 255, 255, 0) 35%),
+    radial-gradient(circle at 78% 12%, rgba(255, 255, 255, 0.45) 0, rgba(255, 255, 255, 0) 34%),
+    linear-gradient(180deg, #d8efff 0%, #9fd0f7 42%, #4894d3 100%);
+}
+
+.sea-layer {
+  position: absolute;
+  left: -12%;
+  right: -12%;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.sea-layer-back {
+  bottom: 48px;
+  height: 90px;
+  background: rgba(31, 113, 176, 0.3);
+  animation: swell 6.5s ease-in-out infinite;
+}
+
+.sea-layer-front {
+  bottom: -24px;
+  height: 130px;
+  background: rgba(17, 84, 137, 0.46);
+  animation: swell 4.2s ease-in-out infinite reverse;
+}
+
+.boat-sprite {
+  position: absolute;
+  width: clamp(74px, 9vw, 112px);
+  left: 6%;
+  bottom: 52px;
+  transform: translateX(-50%);
+  transform-origin: 50% 80%;
+  filter: drop-shadow(0 8px 10px rgba(8, 35, 61, 0.28));
+  z-index: 3;
+}
+
+.boat-sprite.safe {
+  filter: drop-shadow(0 8px 14px rgba(32, 104, 30, 0.3));
+}
+
+.red-boat {
+  z-index: 3;
+}
+
+.safe-boat {
+  z-index: 4;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.safe-boat.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lighthouse-sprite {
+  position: absolute;
+  bottom: 42px;
+  width: clamp(98px, 12vw, 150px);
+  filter: drop-shadow(0 8px 10px rgba(11, 39, 66, 0.24));
+  z-index: 2;
+}
+
+.lighthouse-mid {
+  left: 54%;
+  transform: translateX(-50%);
+  opacity: 0.95;
+}
+
+.lighthouse-end {
+  right: 2.5%;
+}
+
+.lighthouse-label {
+  position: absolute;
+  bottom: 22px;
+  margin: 0;
+  transform: translateX(-50%);
+  font-family: "Space Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6a4d00;
+  background: rgba(255, 243, 181, 0.92);
+  border: 1px solid #efcf64;
+  border-radius: 999px;
+  padding: 2px 8px;
+  z-index: 5;
+}
+
+.lighthouse-label-mid {
+  left: 54%;
+}
+
+.lighthouse-label-end {
+  left: 92%;
+}
+
+.sentence-builder {
+  border-bottom: 1px solid #d5e3f4;
+  padding: 8px 14px;
+  background: #fbfdff;
+  max-width: 100%;
+}
+
+.sentence-title {
+  margin: 0 0 8px;
+  font-family: "Space Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #315074;
+}
+
+.sentence-line {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  pointer-events: none;
+}
+
+.sentence-line::-webkit-scrollbar {
+  display: none;
+}
+
+.word-chip {
+  appearance: none;
+  flex: 0 0 auto;
+  border: 1px solid #f0b6b6;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-family: "Space Mono", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  color: #8d1111;
+  background: #ffecec;
+  box-shadow: 0 2px 6px rgba(88, 12, 12, 0.16);
+  pointer-events: none;
+}
+
+.word-chip.safe {
+  color: #0f5d24;
+  background: #ecffed;
+  border-color: #b9e9c0;
+  box-shadow: 0 2px 6px rgba(20, 91, 22, 0.14);
+}
+
+.word-chip.lighthouse-dot {
+  color: #6a4d00;
+  background: #fff3b5;
+  border-color: #f0d46b;
+  box-shadow: 0 2px 6px rgba(143, 108, 0, 0.2);
+  min-width: 30px;
+  text-align: center;
+}
+
+.word-chip.launching {
+  animation: chipLaunch 0.78s cubic-bezier(0.2, 0.82, 0.22, 1) both;
 }
 
 .typing-card {
@@ -102,9 +306,32 @@ h1 {
   gap: 10px;
 }
 
+.complete-card {
+  background: #fcfcfc;
+  border-color: #dddddd;
+}
+
 .alert-card {
-  border-color: #f1c8c8;
-  background: #fff9f9;
+  position: relative;
+  border: 1px solid var(--line);
+  background: #fff;
+  box-shadow: none;
+  transform: translateY(-2px);
+}
+
+.alert-card::before {
+  content: "Main finding: unsafe continuation";
+  position: absolute;
+  top: -12px;
+  right: 12px;
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #bf1d1d;
+  padding: 4px 8px;
+  border-radius: 999px;
 }
 
 .card-title {
@@ -115,6 +342,12 @@ h1 {
   margin-bottom: 2px;
 }
 
+.alert-card .card-title {
+  color: #8f1515;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
 .flow-block {
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -123,7 +356,8 @@ h1 {
 }
 
 .alert-card .flow-block {
-  border-color: #f1d7d7;
+  border-color: var(--line);
+  background: #fff;
 }
 
 .block-title {
@@ -144,7 +378,7 @@ h1 {
 }
 
 .input-box {
-  min-height: 40px;
+  min-height: 68px;
 }
 
 .generation-box {
@@ -162,13 +396,18 @@ h1 {
 
 .danger {
   color: var(--danger);
+  background: linear-gradient(180deg, transparent 55%, #ffdcdc 55%);
+  font-weight: 600;
+}
+
+.alert-card .cursor {
+  background: #bf1d1d;
 }
 
 .overview p {
   color: #2f2f2f;
   font-size: 20px;
   line-height: 1.5;
-  max-width: 74ch;
 }
 
 .project-links {
@@ -225,25 +464,26 @@ h1 {
 
 .figure-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 14px;
 }
 
 .figure-card {
   margin: 0;
-  border: 1px solid var(--line);
+  border: none;
   border-radius: 14px;
-  background: var(--surface);
-  padding: 12px;
+  background: transparent;
+  padding: 0;
 }
 
 .figure-card img {
   display: block;
-  width: 100%;
+  width: 70%;
   height: auto;
   border-radius: 10px;
-  background: #fff;
-  border: 1px solid #ececec;
+  background: transparent;
+  border: none;
+  margin: 0 auto;
 }
 
 .figure-card figcaption {
@@ -251,6 +491,28 @@ h1 {
   color: #454545;
   font-size: 14px;
   line-height: 1.4;
+}
+
+.model-performance {
+  margin-top: 4px;
+}
+
+.plot-placeholder {
+  border: 1px dashed #b7c4d9;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f9fbff 0%, #f5f8fc 100%);
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.plot-placeholder p {
+  margin: 0;
+  color: #4a5b73;
+  font-family: "Space Mono", monospace;
+  font-size: 14px;
 }
 
 .site-footer {
@@ -272,6 +534,32 @@ h1 {
   }
 }
 
+@keyframes swell {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(2.8%);
+  }
+}
+
+@keyframes chipLaunch {
+  0% {
+    opacity: 0;
+    transform: translate3d(var(--launch-x, 0px), var(--launch-y, -24px), 0)
+      rotate(var(--launch-r, 0deg))
+      scale(0.86);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+}
+
 @media (max-width: 920px) {
   .typing-grid,
   .figure-grid {
@@ -280,5 +568,105 @@ h1 {
 
   .header-inner {
     flex-direction: column;
+  }
+
+  .sea-scene {
+    min-height: 178px;
+  }
+
+  .boat-sprite {
+    bottom: 44px;
+  }
+
+  .lighthouse-sprite {
+    bottom: 34px;
+  }
+
+  .lighthouse-mid {
+    left: 48%;
+  }
+
+  .lighthouse-end {
+    right: 1%;
+  }
+
+  .lighthouse-label {
+    font-size: 10px;
+    bottom: 5px;
+    padding: 2px 7px;
+  }
+
+  .lighthouse-label-mid {
+    left: 52%;
+  }
+
+  .lighthouse-label-end {
+    left: 91%;
+  }
+}
+
+@media (max-width: 640px) {
+  .sailing-stage {
+    border-radius: 12px;
+  }
+
+  .sentence-builder {
+    padding: 7px 10px;
+  }
+
+  .sentence-title {
+    margin-bottom: 6px;
+    font-size: 10px;
+  }
+
+  .sentence-line {
+    gap: 6px;
+    min-height: 30px;
+  }
+
+  .sea-scene {
+    min-height: 156px;
+  }
+
+  .sea-layer-back {
+    bottom: 38px;
+    height: 72px;
+  }
+
+  .sea-layer-front {
+    bottom: -18px;
+    height: 102px;
+  }
+
+  .boat-sprite {
+    width: clamp(56px, 18vw, 78px);
+    bottom: 36px;
+  }
+
+  .lighthouse-sprite {
+    width: clamp(72px, 21vw, 98px);
+    bottom: 28px;
+  }
+
+  .lighthouse-mid {
+    left: 54%;
+  }
+
+  .lighthouse-end {
+    right: 0.5%;
+  }
+
+  .lighthouse-label {
+    bottom: 18px;
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+
+  .lighthouse-label-mid {
+    left: 54%;
+  }
+
+  .lighthouse-label-end {
+    left: 90%;
   }
 }
