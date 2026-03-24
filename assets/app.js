@@ -30,11 +30,12 @@
     "harmful request",
   ];
 
-  function renderWithCursor(el, safe, typedDangerLength) {
+  function renderWithCursor(el, safe, typedDangerLength, showCursor = true) {
     const safeHtml = escapeHtml(safe);
     const danger = incompleteDanger.slice(0, typedDangerLength);
     const dangerHtml = `<span class=\"danger\">${escapeHtml(danger)}</span>`;
-    el.innerHTML = `${safeHtml}${dangerHtml}<span class=\"cursor\"></span>`;
+    const cursorHtml = showCursor ? "<span class=\"cursor\"></span>" : "";
+    el.innerHTML = `${safeHtml}${dangerHtml}${cursorHtml}`;
   }
 
   async function typeText(el, text, speedMs) {
@@ -61,6 +62,8 @@
       await typeInput(completeInputEl, completeInputText, 22);
       await wait(260);
       await typeText(completeGenEl, completeGenText, 24);
+      completeInputEl.textContent = completeInputText;
+      completeGenEl.textContent = completeGenText;
       await wait(520);
 
       await typeInput(incompleteInputEl, incompleteInputText, 22);
@@ -71,11 +74,12 @@
         renderWithCursor(incompleteGenEl, incompleteSafe, i);
         await wait(30);
       }
+      renderWithCursor(incompleteGenEl, incompleteSafe, incompleteDanger.length, false);
 
-      completeInputEl.innerHTML = `${escapeHtml(completeInputText)}<span class=\"cursor\"></span>`;
-      incompleteInputEl.innerHTML = `${escapeHtml(incompleteInputText)}<span class=\"cursor\"></span>`;
-      completeGenEl.innerHTML = `${escapeHtml(completeGenText)}<span class=\"cursor\"></span>`;
-      renderWithCursor(incompleteGenEl, incompleteSafe, incompleteDanger.length);
+      completeInputEl.textContent = completeInputText;
+      incompleteInputEl.textContent = incompleteInputText;
+      completeGenEl.textContent = completeGenText;
+      renderWithCursor(incompleteGenEl, incompleteSafe, incompleteDanger.length, false);
       await wait(2400);
     }
   }
