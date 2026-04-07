@@ -288,13 +288,16 @@
 
       try {
         await navigator.clipboard.writeText(text);
-        copyCitationBtnEl.textContent = "Copied";
+        copyCitationBtnEl.innerHTML = '<span class="citation-copy-icon" aria-hidden="true">✓</span>';
+        copyCitationBtnEl.setAttribute("title", "Copied");
       } catch {
-        copyCitationBtnEl.textContent = "Copy failed";
+        copyCitationBtnEl.innerHTML = '<span class="citation-copy-icon" aria-hidden="true">!</span>';
+        copyCitationBtnEl.setAttribute("title", "Copy failed");
       }
 
       window.setTimeout(() => {
-        copyCitationBtnEl.textContent = "Copy";
+        copyCitationBtnEl.innerHTML = '<span class="citation-copy-icon" aria-hidden="true">📋</span>';
+        copyCitationBtnEl.setAttribute("title", "Copy citation");
       }, 1200);
     });
   }

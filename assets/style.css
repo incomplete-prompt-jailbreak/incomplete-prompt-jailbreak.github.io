@@ -280,7 +280,7 @@ h1 {
   margin-top: 6px;
   margin-bottom: 0;
   padding: 14px 16px;
-  padding-top: 44px;
+  padding-right: 56px;
   border: 1px solid #cfdceb;
   border-radius: 12px;
   background: #fbfdff;
@@ -293,18 +293,23 @@ h1 {
 
 .citation-copy-btn {
   position: absolute;
-  top: 12px;
+  top: 10px;
   right: 12px;
   border: 1px solid #b9c9df;
   background: #ffffff;
   color: #1f2e42;
   border-radius: 999px;
-  padding: 5px 10px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
   font-family: "Inter", sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .citation-copy-btn:hover {
