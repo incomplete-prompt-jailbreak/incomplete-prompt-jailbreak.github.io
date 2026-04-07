@@ -6,13 +6,13 @@
     <title>Incomplete Prompt Jailbreak (IPJ)</title>
     <meta
       name="description"
-      content="Paper project page for Incomplete Prompt Jailbreaks (ACL Findings preprint)."
+      content="Paper project page for Incomplete Prompt Jailbreaks (Accepted at ACL 2026 Findings)."
     />
     <link rel="icon" href="data:," />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Space+Mono:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./assets/style.css" />
@@ -20,11 +20,55 @@
   <body>
     <header class="site-header">
       <div class="header-inner">
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">Dark</button>
         <div>
-          <p class="kicker"> Preprint</p>
+          <div class="header-logos" aria-label="Affiliation and venue logos">
+            <img src="./assets/logo_kaist.png" alt="KAIST logo" class="header-logo kaist-logo" />
+            <div class="acl-logo-wrap">
+              <img src="./assets/logo_acl.jpg" alt="ACL logo" class="header-logo acl-logo" />
+              <span class="acl-logo-text">ACL 2026</span>
+            </div>
+            <img src="./assets/logo_sail.png" alt="SAIL logo" class="header-logo sail-logo" />
+          </div>
           <h1>Incomplete Prompt Jailbreaks</h1>
-          <p class="subtitle">Project page for the preprint.</p>
+          <p class="subtitle">Accepted at ACL 2026 Findings.</p>
           <p class="authors">Yeonjea Kim*, Bumjin Park*, Jaesik Choi</p>
+          <div class="project-links" aria-label="Project resources">
+            <a href="#" class="resource-link paper-link">
+              <span class="badge-icon" aria-hidden="true">📄</span>
+              <span>Paper</span>
+            </a>
+            <a href="https://huggingface.co/datasets/leo-bjpark/incomplete-prompt-jailbreak" class="resource-link" target="_blank" rel="noreferrer">
+              <span class="badge-icon" aria-hidden="true">🤗</span>
+              Dataset (Hugging Face)
+            </a>
+            <a href="https://github.com/yeonjea/incomplete-prompt-jailbreaks" class="resource-link" target="_blank" rel="noreferrer">
+              <span class="badge-icon" aria-hidden="true">
+                <svg viewBox="0 0 16 16" role="img" focusable="false">
+                  <path
+                    d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.64 7.64 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+                  />
+                </svg>
+              </span>
+              Code (GitHub)
+            </a>
+          </div>
+          <div class="sailing-stage" aria-label="Sea voyage generation animation">
+            <div class="sentence-builder" aria-label="Generated sentence builder">
+              <p class="sentence-title">Token Generation Flow</p>
+              <div class="sentence-line" id="sentence-line"></div>
+            </div>
+            <div class="sea-scene" id="sea-scene">
+              <div class="sea-layer sea-layer-back" aria-hidden="true"></div>
+              <div class="sea-layer sea-layer-front" aria-hidden="true"></div>
+              <img class="lighthouse-sprite lighthouse-mid" src="./assets/hobor.png" alt="Middle lighthouse" />
+              <p class="lighthouse-label lighthouse-label-mid">Termination</p>
+              <img class="lighthouse-sprite lighthouse-end" src="./assets/hobor.png" alt="Final lighthouse" />
+              <p class="lighthouse-label lighthouse-label-end">Termination</p>
+              <img id="boat-sprite" class="boat-sprite red-boat" src="./assets/boat.png" alt="Red boat moving toward middle lighthouse" />
+              <img id="safe-boat-sprite" class="boat-sprite safe-boat" src="./assets/safe.png" alt="Safety boat moving toward final lighthouse" />
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -33,33 +77,16 @@
       <section class="overview" aria-label="Paper overview">
         <h2>Overview</h2>
         <p>
-          We study incomplete prompt jailbreaks where models continue harmful content before refusal is triggered.
-          This project page summarizes our setup, observations, and analysis.
+          <span class="overview-emphasis">Open-source models remain vulnerable to completion-style attacks</span>, and
+          defense via fine-tuning alone shows limited generalization. We find that removing neurons associated with
+          termination control increases harmful continuation, while
+          <span class="overview-emphasis">neuron-level intervention to strengthen termination</span> provides a
+          promising direction for safer generation.
         </p>
-        <div class="project-links" aria-label="Project resources">
-          <a href="#" class="resource-link paper-link">
-            <span class="badge-icon" aria-hidden="true">📄</span>
-            <span>Paper</span>
-          </a>
-          <a href="https://huggingface.co/datasets/leo-bjpark/incomplete-prompt-jailbreak" class="resource-link" target="_blank" rel="noreferrer">
-            <span class="badge-icon" aria-hidden="true">🤗</span>
-            Dataset (Hugging Face)
-          </a>
-          <a href="https://github.com/yeonjea/incomplete-prompt-jailbreaks" class="resource-link" target="_blank" rel="noreferrer">
-            <span class="badge-icon" aria-hidden="true">
-              <svg viewBox="0 0 16 16" role="img" focusable="false">
-                <path
-                  d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.64 7.64 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
-                />
-              </svg>
-            </span>
-            Code (GitHub)
-          </a>
-        </div>
       </section>
 
       <section class="typing-section" aria-label="Completion and incomplete comparison">
-        <h2>Incomplete Prompt Jailbreak (IPJ) Example</h2>
+        <h2>Problem: Incomplete Prompt Jailbreak (IPJ) Example</h2>
         <div class="typing-grid">
           <article class="typing-card complete-card">
             <p class="card-title">Completion Prompt</p>
@@ -87,44 +114,185 @@
       </section>
 
       <section class="llm-tendency-section" aria-label="LLM termination tendency">
-        <h2>LLM Termination Tendency</h2>
-        <p class="termination-trend">
-          Below, we show a separate LLM-level tendency: when the model encounters an incomplete harmful sentence, it
-          often continues unsafe generation before switching to a refusal or safe response around termination cues.
+        <h2>Observation:LLM Termination Tendency</h2>
+        <p class="section-lead">
+          The animation illustrates a consistent trajectory under incomplete harmful prompts. Early in generation, the
+          model tends to keep extending the same <span class="trend-harmful">harmful continuation</span>. Once
+          <span class="trend-termination">termination cues</span> become salient, the trajectory changes and the model
+          is more likely to transition into <span class="trend-refusal">refusal / safe completion</span>.
         </p>
-
-        <div class="sailing-stage" aria-label="Sea voyage generation animation">
-          <div class="sentence-builder" aria-label="Generated sentence builder">
-            <p class="sentence-title">Token Generation Flow</p>
-            <div class="sentence-line" id="sentence-line"></div>
-          </div>
-          <div class="sea-scene" id="sea-scene">
-            <div class="sea-layer sea-layer-back" aria-hidden="true"></div>
-            <div class="sea-layer sea-layer-front" aria-hidden="true"></div>
-            <img class="lighthouse-sprite lighthouse-mid" src="./assets/hobor.png" alt="Middle lighthouse" />
-            <p class="lighthouse-label lighthouse-label-mid">Termination</p>
-            <img class="lighthouse-sprite lighthouse-end" src="./assets/hobor.png" alt="Final lighthouse" />
-            <p class="lighthouse-label lighthouse-label-end">Termination</p>
-            <img id="boat-sprite" class="boat-sprite red-boat" src="./assets/boat.png" alt="Red boat moving toward middle lighthouse" />
-            <img id="safe-boat-sprite" class="boat-sprite safe-boat" src="./assets/safe.png" alt="Safety boat moving toward final lighthouse" />
-          </div>
-        </div>
       </section>
 
       <section class="figures" aria-label="Research figures">
-        <h2>Figures</h2>
+        <h2>Why Is IPJ Attack Related to Termination?</h2>
+        <div class="vulnerability-text">
+          <p>
+            IPJ attacks emerge from the interaction between sentence completion and termination signals. The key
+            mechanism differs across complete and incomplete contexts as follows.
+          </p>
+          <ul class="vulnerability-points">
+            <li>
+              <strong>complete text:</strong> Once a semantic unit is completed, the model can transition more easily
+              to a new meaning, making a shift from harmful continuation to safer output more likely.
+            </li>
+            <li>
+              <strong>incomplete text:</strong> Before the ongoing meaning is finished, redirection is harder, so
+              jailbreak behavior is more likely; refusal tends to appear only after termination cues emerge.
+            </li>
+            <li>
+              <strong>incomplete + no completion:</strong> If no completion/termination signal is triggered, the model
+              keeps extending the same meaning, and harmful generation can persist.
+            </li>
+          </ul>
+        </div>
         <div class="figure-grid">
           <figure class="figure-card">
             <img src="./assets/main_figure.png" alt="Main figure for incomplete prompt jailbreak analysis" />
-            <figcaption>Main Figure. Overview of incomplete prompt jailbreak analysis.</figcaption>
           </figure>
         </div>
       </section>
 
-      <section class="model-performance" aria-label="Model performance plot placeholder">
-        <h2>Model-wise Performance (Coming Soon)</h2>
-        <div class="plot-placeholder" role="img" aria-label="Placeholder for future model performance plot">
-          <p>Model별 성능 plot이 여기에 추가될 예정입니다.</p>
+      <section class="model-performance" aria-label="Model-wise performance">
+        <h2>Model-wise Performance</h2>
+        <p class="section-lead">
+          We measure how strongly each model exhibits IPJ-related behavior across four safety metrics, comparing
+          Completion and Chat settings. The bar charts summarize each model’s overall tendency (min/mean/max across
+          attractors), and the box plots show how outcomes vary by attractor across models. Together, these results
+          highlight where harmful continuation remains strong and where refusal behavior becomes more consistent.
+        </p>
+        <div class="perf-dashboard">
+          <div class="perf-controls-card">
+            <div class="perf-control-block perf-control-block-metric">
+              <div id="perf-metric-picker" class="perf-metric-picker" aria-labelledby="perf-metric-label"></div>
+            </div>
+          </div>
+
+          <nav class="perf-mobile-plot-nav" id="perf-mobile-plot-nav" aria-label="Pick one chart (small screens)">
+            <div class="perf-mobile-plot-table" role="presentation">
+              <div class="perf-mobile-plot-th perf-mobile-plot-th-completion">Completion</div>
+              <div class="perf-mobile-plot-th perf-mobile-plot-th-chat">Chat</div>
+              <div
+                class="perf-mobile-plot-tablist"
+                role="tablist"
+                aria-labelledby="perf-mobile-plot-nav-label"
+              >
+                <button
+                  type="button"
+                  class="perf-mobile-plot-btn is-active"
+                  role="tab"
+                  aria-selected="true"
+                  aria-label="Completion, scores by model"
+                  data-perf-plot="completion-bars"
+                >
+                  Model
+                </button>
+                <button
+                  type="button"
+                  class="perf-mobile-plot-btn"
+                  role="tab"
+                  aria-selected="false"
+                  aria-label="Completion, distribution by attractor"
+                  data-perf-plot="completion-box"
+                >
+                  Attractor
+                </button>
+                <button
+                  type="button"
+                  class="perf-mobile-plot-btn"
+                  role="tab"
+                  aria-selected="false"
+                  aria-label="Chat, scores by model"
+                  data-perf-plot="chat-bars"
+                >
+                  Model
+                </button>
+                <button
+                  type="button"
+                  class="perf-mobile-plot-btn"
+                  role="tab"
+                  aria-selected="false"
+                  aria-label="Chat, distribution by attractor"
+                  data-perf-plot="chat-box"
+                >
+                  Attractor
+                </button>
+              </div>
+            </div>
+          </nav>
+
+          <div class="perf-plots-grid">
+            <div class="perf-dual-row perf-dual-charts" aria-label="Score by model, both datasets">
+              <div class="perf-plot-slot is-active-mobile-plot" data-perf-plot="completion-bars">
+                <div class="perf-chart-panel">
+                  <p class="perf-panel-title" id="perf-bar-title-completion">Completion — mean by model</p>
+                  <div class="perf-chart-wrap" id="perf-chart-wrap-completion">
+                    <canvas
+                      id="perf-chart-completion"
+                      aria-label="Completion: min, mean, and max score by model across attractors"
+                    ></canvas>
+                  </div>
+                  <div class="perf-bar-legend-row" aria-label="Bar chart legend">
+                    <span class="perf-bar-legend-prefix">Over 9 attractors</span>
+                    <div class="perf-bar-legend-items"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="perf-plot-slot" data-perf-plot="chat-bars">
+                <div class="perf-chart-panel">
+                  <p class="perf-panel-title" id="perf-bar-title-chat">Chat — mean by model</p>
+                  <div class="perf-chart-wrap" id="perf-chart-wrap-chat">
+                    <canvas
+                      id="perf-chart-chat"
+                      aria-label="Chat: min, mean, and max score by model across attractors"
+                    ></canvas>
+                  </div>
+                  <div class="perf-bar-legend-row" aria-label="Bar chart legend">
+                    <span class="perf-bar-legend-prefix">Over 9 attractors</span>
+                    <div class="perf-bar-legend-items"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="perf-dual-row perf-dual-bottom" aria-label="Box plots by attractor, both datasets">
+              <div class="perf-plot-slot" data-perf-plot="completion-box">
+                <div class="perf-boxplot-section">
+                  <p class="perf-panel-title">Completion — score by attractor (across models)</p>
+                  <div id="perf-boxplot-completion" class="perf-boxplot" aria-label="Completion box plot by attractor"></div>
+                  <p id="perf-boxplot-caption-completion" class="perf-heatmap-caption"></p>
+                </div>
+              </div>
+              <div class="perf-plot-slot" data-perf-plot="chat-box">
+                <div class="perf-boxplot-section">
+                  <p class="perf-panel-title">Chat — score by attractor (across models)</p>
+                  <div id="perf-boxplot-chat" class="perf-boxplot" aria-label="Chat template box plot by attractor"></div>
+                  <p id="perf-boxplot-caption-chat" class="perf-heatmap-caption"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing-section" aria-label="Closing note on safety research">
+        <h2>Closing Note</h2>
+        <p class="section-lead">
+          For detailed analyses of how training and neuron-level control affect the impact of IPJ, please refer to the
+          paper. We believe LLM safety requires more active and continuous research, and we welcome collaboration on
+          broader vulnerability analysis to better understand and mitigate emerging failure modes.
+        </p>
+      </section>
+
+      <section class="citation-section" aria-label="ACL 2026 citation">
+        <h2>Citation</h2>
+        <div class="citation-wrap">
+          <button id="copy-citation-btn" class="citation-copy-btn" type="button">Copy</button>
+          <pre id="citation-bibtex" class="citation-box"><code>@inproceedings{kim-park-choi-2026-ipj,
+  title     = {Incomplete Prompt Jailbreaks},
+  author    = {Kim, Yeonjea and Park, Bumjin and Choi, Jaesik},
+  booktitle = {Findings of the Association for Computational Linguistics: ACL 2026},
+  year      = {2026}
+}</code></pre>
         </div>
       </section>
     </main>
@@ -133,6 +301,9 @@
       <p>© <span id="year"></span> Incomplete Prompt Jailbreaks</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.3/plotly.min.js" defer></script>
+    <script src="./assets/performance.js" defer></script>
     <script src="./assets/app.js" defer></script>
   </body>
 </html>
