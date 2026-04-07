@@ -658,40 +658,45 @@ html[data-theme="dark"] .danger {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
 .resource-link {
   text-decoration: none;
   color: var(--ink);
-  border: 1px solid #d8dee8;
-  background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+  border: 1px solid #d7deea;
+  background: #ffffff;
   border-radius: 999px;
-  padding: 8px 14px 8px 10px;
+  padding: 8px 12px;
   font-family: "Inter", sans-serif;
   font-size: 13px;
+  font-weight: 600;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  box-shadow: 0 1px 0 #fff inset, 0 1px 3px rgba(20, 24, 30, 0.08);
+  gap: 7px;
+  box-shadow: 0 1px 2px rgba(20, 24, 30, 0.06);
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.12s ease;
 }
 
 .paper-link {
-  border-color: #cedcf2;
-  background: #f6f9ff;
+  border-color: #bfd1ea;
+  background: #f8fbff;
 }
 
 .badge-icon {
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1;
-  background: #ffffff;
-  border: 1px solid #d7deea;
+  background: #f3f7fd;
+  border: 1px solid #d5deea;
 }
 
 .badge-icon svg {
@@ -701,7 +706,8 @@ html[data-theme="dark"] .danger {
 }
 
 .resource-link:hover {
-  border-color: #bfc9da;
+  border-color: #aebfd8;
+  background: #f9fbff;
   transform: translateY(-1px);
 }
 
@@ -1351,15 +1357,15 @@ html[data-theme="dark"] .theme-toggle:hover {
 }
 
 html[data-theme="dark"] .resource-link {
-  color: #dce5f0;
-  border-color: #334357;
-  background: linear-gradient(180deg, #182130 0%, #141c27 100%);
+  color: #d7e1ee;
+  border-color: #3a4b63;
+  background: #121a25;
   box-shadow: none;
 }
 
 html[data-theme="dark"] .badge-icon {
-  background: #0f1621;
-  border-color: #2f4055;
+  background: #1a2432;
+  border-color: #3f546f;
 }
 
 html[data-theme="dark"] .badge-icon svg {
@@ -1409,12 +1415,12 @@ html[data-theme="dark"] .trend-termination {
 }
 
 html[data-theme="dark"] .word-chip.lighthouse-dot {
-  color: #062238;
-  background: #8ed8ff;
-  border-color: #66c8ff;
+  color: #111111;
+  background: #ffe56b;
+  border-color: #f0cf4f;
   box-shadow:
-    0 2px 6px rgba(72, 154, 201, 0.28),
-    0 0 0 6px rgba(118, 208, 255, 0.24);
+    0 2px 6px rgba(143, 108, 0, 0.22),
+    0 0 0 6px rgba(255, 235, 120, 0.2);
 }
 
 html[data-theme="dark"] .perf-metric-desktop .perf-metric-btn {
